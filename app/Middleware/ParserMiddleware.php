@@ -4,6 +4,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 use Slim\Psr7\Response;
 
+/* Replacing the @APP_NAME@, @LANG@ and @CHARSET@ placeholders with the values from the .env file. */
 class ParserMiddleware
 {
 

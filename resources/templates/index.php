@@ -48,7 +48,7 @@
         </h2>
         <br>
         <?php
-            dd($name);
+            echo $name;
         ?>
         <span>your brand new @APP_NAME@ application ready to use!</span>
     </div>

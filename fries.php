@@ -91,6 +91,15 @@ class $generatedName extends Model
 
 }
 
+function createMigration($name, $sufix = null) {
+    try {
+        echo `php vendor/bin/phinx create {$name}`;
+    } catch(TypeError $e) {
+        echo "Something goes wrong, error code {$e->getCode()}";
+    }
+
+}
+
 function execute($mainProperty, $secondProperty = null, $sufix = null) {
     $parsed = explode(':', $mainProperty);
     if ($parsed[0] === 'c') {
@@ -102,11 +111,13 @@ function execute($mainProperty, $secondProperty = null, $sufix = null) {
             case 'model':
                 createModel($secondProperty, $sufix);
                 break;
+            case 'migration':
+                createMigration($secondProperty, $sufix);
+                break;
             default:
                 printDescription();
                 return false;
         };
     }
-    printDescription();
     return false;
 }

@@ -131,13 +131,20 @@ class ErrorRenderer implements ErrorRendererInterface
             </body>
         </html>
         ";
-        if ($_ENV['MODE'] === 'dev') {
+        if ($_ENV['MODE'] === 'development') {
             echo $content;
         } else {
             echo "Error";
         }
     }
 
+    /**
+     * It takes an array of stack trace information and returns a string of HTML
+     *
+     * @param trace The trace array from the exception
+     *
+     * @return The file and line number of the error.
+     */
     public function renderTrace($trace)
     {
         $content = '';
@@ -148,6 +155,15 @@ class ErrorRenderer implements ErrorRendererInterface
         return $content;
     }
 
+    /**
+     * It takes a file name, a file array, and a line number, and returns a string of HTML
+     *
+     * @param fileName The file name of the file that contains the error.
+     * @param file The file that the error occurred in.
+     * @param line The line number of the error
+     *
+     * @return string The code from the file that is being called.
+     */
     public function getCodeFromFile($fileName, $file, $line): string
     {
 

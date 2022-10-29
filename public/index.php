@@ -2,6 +2,8 @@
 error_reporting(0);
 
 ini_set('display_errors', 0);
+
+use App\Middleware\Auth;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
@@ -13,6 +15,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 require __DIR__ . '/../vendor/autoload.php';
+
+require __DIR__ . '/../config.php';
 
 session_start();
 $dotenv = Dotenv\Dotenv::createImmutable('..');
@@ -51,6 +55,7 @@ $container = $app->getContainer();
 $app->addRoutingMiddleware();
 
 $app->add(new ParserMiddleware());
+$app->add(new Auth());
 
 /**
  * Add Error Middleware
@@ -67,7 +72,11 @@ $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 $errorHandler = $errorMiddleware->getDefaultErrorHandler();
 $errorHandler->registerErrorRenderer('text/html', ErrorRenderer::class);
 
-require 'routes.php';
+/*
+ * Routes start
+ */
+
+$app->get('/', [MainController::class, 'index']);
 
 $app->run();
 
