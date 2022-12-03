@@ -55,7 +55,6 @@ $container = $app->getContainer();
 $app->addRoutingMiddleware();
 
 $app->add(new ParserMiddleware());
-$app->add(new Auth());
 
 /**
  * Add Error Middleware
@@ -75,8 +74,7 @@ $errorHandler->registerErrorRenderer('text/html', ErrorRenderer::class);
 /*
  * Routes start
  */
-
-$app->get('/', [MainController::class, 'index']);
+require '../routes/web.php';
 
 $app->run();
 

@@ -8,15 +8,12 @@ use Psr\Http\Message\ServerRequestInterface;
 /* Extending the Controller class. */
 class MainController extends Controller
 {
+
     /**
-     * > This function is called when the user visits the root of the website
-     *
-     * @param ServerRequestInterface request The request object.
-     * @param ResponseInterface response The response object that will be returned to the client.
-     *
-     * @return The response object with the rendered template.
+     * @throws \Throwable
      */
-    public function index(ServerRequestInterface $request, ResponseInterface $response) {
+    public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    {
         return $this->render($response, 'index.php');
     }
 }

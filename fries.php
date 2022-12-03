@@ -28,6 +28,9 @@ if (isset($argv[1])) {
     printDescription();
 }
 
+/**
+ * It prints the word "Description" to the screen
+ */
 function printDescription() {
     echo "Description";
 }
@@ -100,7 +103,17 @@ function createMigration($name, $sufix = null) {
 
 }
 
-function execute($mainProperty, $secondProperty = null, $sufix = null) {
+/**
+ * > It takes three arguments, the first one is mandatory, the second and third are optional. It returns a boolean value
+ *
+ * @param mainProperty The first parameter that is passed to the command.
+ * @param secondProperty The name of the class you want to create.
+ * @param sufix This is the sufix of the file.
+ *
+ * @return bool A boolean value.
+ */
+function execute($mainProperty, $secondProperty = null, $sufix = null): bool
+{
     $parsed = explode(':', $mainProperty);
     if ($parsed[0] === 'c') {
         switch($parsed[1]) {

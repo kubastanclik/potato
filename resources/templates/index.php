@@ -47,9 +47,6 @@
             Potato would like to present
         </h2>
         <br>
-        <?php
-            echo $name;
-        ?>
         <span>your brand new @APP_NAME@ application ready to use!</span>
     </div>
 </body>
